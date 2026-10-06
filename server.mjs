@@ -58,6 +58,7 @@ const server = http.createServer(async (req, res) => {
       res.end(req.method === 'HEAD' ? undefined : page);
       return;
     }
+    if (req.method === 'GET' && path === '/api/contact-status') return send(res, 200, { enabled: true });
     // Never serve arbitrary files: enquiries and server code stay private.
     if (path !== '/api/inquiries') return send(res, 404, { error: 'Not found' });
     if (req.method !== 'POST') {
