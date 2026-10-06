@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Nikita Makeev — Full-Stack разработчик. ИИ-интеграции, автоматизация процессов и веб-приложения, которые помогают бизнесу сохранять клиентов.">
+  <title>Nikita Makeev — AI &amp; Full-Stack Developer</title>
+  <!-- Tailwind Play CDN: https://tailwindcss.com/docs/installation/play-cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f6f7f2; color: #183c32; }
+    ::selection { background: #d6f275; color: #183c32; }
+    a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px solid #35755c; outline-offset: 5px; }
+    .project-track { scrollbar-width: thin; scrollbar-color: #668574 #e3e8de; }
+    .project-track > article { scroll-snap-align: start; }
+    .preview-grid { background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 24px 24px; }
+    .tag { display: inline-block; border: 1px solid #dce2d6; border-radius: 8px; padding: 7px 11px; font-size: 14px; color: #3d5146; background: #fff; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body class="antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:p-4">Перейти к содержанию</a>
+
+  <header class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 md:px-8 md:py-6">
+    <a href="#main" aria-label="Nikita Makeev — на главную" class="flex min-h-11 items-center gap-3 font-semibold tracking-tight">
+      <span aria-hidden="true" class="flex size-9 items-center justify-center rounded-xl bg-[#183c32] text-sm text-[#d6f275]">nm.</span>
+      <span>Nikita Makeev<span class="block text-xs font-normal tracking-normal text-[#5b6b60]">Full-Stack · AI &amp; Automation</span></span>
+    </a>
+    <nav aria-label="Основная навигация" class="flex items-center gap-5 text-sm font-medium">
+      <a href="#projects" class="flex min-h-11 items-center underline-offset-4 hover:underline">Проекты <span aria-hidden="true" class="ml-1">↗</span></a>
+      <a href="#skills" class="hidden min-h-11 items-center underline-offset-4 hover:underline md:flex">Навыки</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="hero-title" class="mx-auto max-w-6xl px-5 pt-5 pb-10 md:px-8 md:pt-14 md:pb-16">
+      <div class="grid items-end gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+        <div>
+          <p class="mb-4 flex items-center gap-2 text-xs font-medium uppercase tracking-[.14em] text-[#536556]">
+            <span aria-hidden="true" class="size-1.5 rounded-full bg-[#4e7354]"></span> Разработка для бизнеса
+          </p>
+          <h1 id="hero-title" class="max-w-3xl text-[clamp(2rem,8.3vw,3rem)] leading-[1.08] font-semibold tracking-[-.055em] md:text-6xl lg:text-[4.2rem]">
+            Меньше рутины.<br>Больше <span class="text-[#577b2d]">сохранённых<br class="hidden md:block"> клиентов.</span>
+          </h1>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-[#526257] md:text-lg">
+            Создаю веб-системы, связываю CRM и внедряю ИИ, чтобы заявки не терялись, а команда работала быстрее.
+          </p>
+          <p class="mt-4 text-xs font-medium tracking-wide text-[#5b6b60] md:text-sm">React · Node.js · Go <span class="mx-2 text-[#a3af9a]">/</span> Claude · GPT · Gemini</p>
+        </div>
+        <div>
+          <p class="mb-3 hidden text-sm text-[#5b6b60] lg:block">Начнём с вашей бизнес-задачи</p>
+          <div id="hero-contacts" class="grid grid-cols-2 gap-2.5">
+            <a href="mailto:nikita.makeev.dev@gmail.com" class="col-span-2 flex min-h-14 items-center justify-between gap-3 rounded-xl bg-[#183c32] px-5 py-3 text-base font-medium text-white transition-colors hover:bg-[#2b5144]">
+              <span>Обсудить задачу <span class="ml-1 text-xs font-normal text-[#c5d5c7]">/ Email</span></span><span aria-hidden="true">↗</span>
+            </a>
+            <a href="tel:+37256816367" aria-label="Позвонить: +372 5681 6367" class="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d4dccf] bg-white px-3 py-3 text-sm font-medium transition-colors hover:bg-[#eaf0e3]">Телефон <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/nikita-makeev-b89400331" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — откроется в новой вкладке" class="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d4dccf] bg-white px-3 py-3 text-sm font-medium transition-colors hover:bg-[#eaf0e3]">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="mt-2 flex items-center justify-between gap-3 text-xs text-[#5b6b60]">
+            <span>Эстония · Удалённо</span>
+            <a href="https://github.com/NikitaMakeev" target="_blank" rel="noopener noreferrer" aria-label="Профиль GitHub — откроется в новой вкладке" class="inline-flex min-h-11 items-center gap-1 underline-offset-4 hover:underline">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title" class="border-y border-[#dce2d6] bg-white/60 py-10 md:py-16">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="mb-2 text-xs font-medium uppercase tracking-[.16em] text-[#65765f]">01 / Избранные работы</p>
+            <h2 id="projects-title" class="text-3xl font-semibold tracking-[-.04em] md:text-4xl">От задачи до работающей системы.</h2>
+          </div>
+          <span aria-hidden="true" class="text-sm text-[#6b7a63]">2022 — 2026</span>
+        </div>
+        <p class="mt-4 max-w-2xl text-sm leading-relaxed text-[#5b6b60]">Исходный код защищён NDA. Здесь — описание моей работы и ссылки только на публичные сайты. Иллюстрации — условные макеты, без данных клиентов.</p>
+        <p id="swipe-hint" class="mt-5 text-xs text-[#5b6b60] lg:hidden">Листайте проекты в сторону <span aria-hidden="true">→</span></p>
+
+        <div class="project-track mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 lg:mt-7 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible" tabindex="0" role="region" aria-label="Кейсы: горизонтальная прокрутка на небольших экранах">
+          <article class="flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <!-- Replace this figure with an approved 16:9 screenshot when available. -->
+            <figure class="preview-grid relative flex aspect-video items-center justify-center overflow-hidden bg-[#1d3834] p-6" aria-label="Условная иллюстрация турнирной сетки">
+              <div aria-hidden="true" class="flex w-full max-w-64 items-center text-[#d6f275]">
+                <div class="w-2/5 space-y-5"><div class="rounded-md border border-white/20 bg-white/5 p-3"><div class="h-1.5 w-3/4 rounded bg-white/40"></div></div><div class="rounded-md border border-white/20 bg-white/5 p-3"><div class="h-1.5 w-2/3 rounded bg-white/40"></div></div></div>
+                <div class="h-14 w-7 rounded-r-lg border-y border-r border-[#d6f275]/60"></div><div class="h-px w-5 bg-[#d6f275]/60"></div><div class="flex h-14 flex-1 items-center justify-center rounded-lg border border-[#d6f275]/50 bg-[#d6f275]/10 text-xl">★</div>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#c3d2c8]">Концепт / Tournament system</figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#c3d2c8]">01</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]">Архитектура · Разработка · Запуск</p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight" lang="en">Esports Tournament Platform</h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Задача:</strong> запустить платформу киберспортивных турниров с призовыми фондами.</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Моя работа:</strong> спроектировал архитектуру, связал интерфейс, сервер и базу данных. Довёл систему до запуска и поддерживал её стабильность.</p>
+              <div class="mt-auto pt-6"><p class="flex min-h-12 items-center border-t border-[#e5e9e0] pt-3 text-xs text-[#64735f]">Публичная ссылка не представлена</p></div>
+            </div>
+          </article>
+
+          <article class="flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <figure class="relative flex aspect-video items-center justify-center overflow-hidden bg-[#e5e9de] p-7" aria-label="Условная иллюстрация галереи фотографий">
+              <div aria-hidden="true" class="grid w-full max-w-60 rotate-[-4deg] grid-cols-3 gap-2 rounded-xl border border-white/80 bg-white/70 p-3 shadow-lg shadow-[#183c32]/10">
+                <div class="col-span-3 mb-1 flex items-center gap-1"><span class="size-1 rounded-full bg-[#769165]"></span><span class="h-1 w-12 rounded bg-[#b7c6ac]"></span></div>
+                <div class="relative aspect-square overflow-hidden rounded bg-[#b6c9ac]"><div class="absolute -bottom-4 left-0 size-14 rotate-45 bg-[#51715c]"></div><div class="absolute top-2 right-2 size-3 rounded-full bg-[#f5edc2]"></div></div>
+                <div class="aspect-square rounded bg-[#d0b99a]"></div><div class="aspect-square rounded bg-[#739394]"></div><div class="aspect-square rounded bg-[#b1bfa4]"></div><div class="aspect-square rounded bg-[#e3d9bb]"></div><div class="aspect-square rounded bg-[#839e87]"></div>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#526257]">Концепт / Photo library</figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#526257]">02</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]">Go · Flutter · Full-Stack</p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight" lang="en">Photo Storage Application</h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Задача:</strong> создать веб-приложение для хранения фотографий по принципу Google Photos.</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Моя работа:</strong> самостоятельно разработал серверную часть на Go и интерфейс на Flutter, объединив их в полноценное приложение.</p>
+              <div class="mt-auto pt-6"><p class="flex min-h-12 items-center border-t border-[#e5e9e0] pt-3 text-xs text-[#64735f]">Публичная ссылка не представлена</p></div>
+            </div>
+          </article>
+
+          <article class="flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <figure class="relative flex aspect-video items-center justify-center overflow-hidden bg-[#edf0d8] p-6" aria-label="Условная схема передачи заявки с сайта в CRM">
+              <div aria-hidden="true" class="flex w-full max-w-64 items-center justify-center gap-3">
+                <div class="flex size-16 flex-col justify-center gap-2 rounded-xl border border-[#d0d7b8] bg-white p-4 shadow-sm"><div class="h-1 rounded bg-[#b6c2a3]"></div><div class="h-1 rounded bg-[#b6c2a3]"></div><div class="h-2 rounded bg-[#7f9b50]"></div></div>
+                <span class="text-xl text-[#728152]">→</span><div class="flex size-20 items-center justify-center rounded-2xl bg-[#244a3c] font-mono text-base text-[#d6f275]">CRM</div><span class="text-xl text-[#728152]">✓</span>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#526257]">Концепт / Lead tracking</figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#526257]">03</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]">Bitrix CRM · Учёт заявок</p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight" lang="en">Lead Tracking for ivkoolitus.ee</h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Задача:</strong> организовать учёт входящих заявок для образовательного центра.</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]">Моя работа:</strong> настроил отслеживание лидов в Bitrix CRM, чтобы команда могла управлять обращениями в единой системе.</p>
+              <div class="mt-auto pt-6"><a href="https://ivkoolitus.ee/" target="_blank" rel="noopener noreferrer" aria-label="Visit Website — ivkoolitus.ee, в новой вкладке" class="flex min-h-12 items-center justify-between rounded-lg bg-[#eff4e8] px-4 py-3 text-sm font-medium transition-colors hover:bg-[#e0ebd3]"><span lang="en">Visit Website</span><span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title" class="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-16">
+      <p class="mb-2 text-xs font-medium uppercase tracking-[.16em] text-[#65765f]">02 / Инструменты</p>
+      <h2 id="skills-title" class="text-3xl font-semibold tracking-[-.04em] md:text-4xl">Технологии под вашу задачу.</h2>
+      <div class="mt-7 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div>
+          <h3 class="text-lg font-semibold" lang="en">AI &amp; Automation</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-[#5b6b60]">Связываю модели, сервисы и данные, чтобы сократить ручную работу.</p>
+          <ul aria-label="Навыки ИИ и автоматизации" class="mt-4 flex flex-wrap gap-2">
+            <li class="tag">Claude</li><li class="tag">GPT</li><li class="tag">Gemini</li><li class="tag">LLM APIs</li><li class="tag">Prompt Engineering</li><li class="tag">Workflow Automation</li><li class="tag">CRM Integrations</li><li class="tag">Webhooks</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold" lang="en">Full-Stack Development</h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-[#5b6b60]">Беру на себя весь цикл: от интерфейса и архитектуры до интеграций и запуска.</p>
+          <ul aria-label="Навыки разработки" class="mt-4 flex flex-wrap gap-2">
+            <li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Go</li><li class="tag">TypeScript</li><li class="tag">Vue</li><li class="tag">Flutter</li><li class="tag">Java</li><li class="tag">REST APIs</li><li class="tag">PostgreSQL</li><li class="tag">MariaDB</li><li class="tag">Tailwind CSS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-[#183c32] text-white">
+    <div class="mx-auto max-w-6xl px-5 pt-10 pb-5 md:px-8 md:pt-14">
+      <div class="grid gap-7 md:grid-cols-2 md:gap-12">
+        <div>
+          <p class="mb-3 text-xs font-medium uppercase tracking-[.16em] text-[#c1d0ba]">03 / Давайте обсудим</p>
+          <h2 class="max-w-lg text-3xl leading-tight font-semibold tracking-[-.04em] md:text-4xl">Где ваш бизнес<br><span class="text-[#d6f275]">теряет время и заявки?</span></h2>
+          <p class="mt-4 max-w-md text-sm leading-relaxed text-[#c7d4ca]">Расскажите о задаче и текущем процессе. Вместе определим, что стоит автоматизировать первым.</p>
+        </div>
+        <address class="flex flex-col gap-2 not-italic md:justify-center">
+          <a href="mailto:nikita.makeev.dev@gmail.com" class="flex min-h-14 items-center justify-between gap-3 rounded-xl bg-[#d6f275] px-4 py-3 text-sm font-semibold text-[#183c32] transition-colors hover:bg-[#e3fa9e] md:text-base"><span class="break-all">nikita.makeev.dev@gmail.com</span><span aria-hidden="true">↗</span></a>
+          <a href="tel:+37256816367" class="flex min-h-12 items-center justify-between rounded-xl border border-[#597567] px-4 py-3 text-sm transition-colors hover:bg-white/10"><span>+372 5681 6367</span><span aria-hidden="true">↗</span></a>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="https://www.linkedin.com/in/nikita-makeev-b89400331" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — откроется в новой вкладке" class="flex min-h-12 items-center justify-between rounded-xl border border-[#597567] px-4 py-3 text-sm transition-colors hover:bg-white/10">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/NikitaMakeev" target="_blank" rel="noopener noreferrer" aria-label="Профиль GitHub — откроется в новой вкладке" class="flex min-h-12 items-center justify-between rounded-xl border border-[#597567] px-4 py-3 text-sm transition-colors hover:bg-white/10">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </address>
+      </div>
+      <div class="mt-10 flex flex-wrap justify-between gap-2 border-t border-white/15 pt-5 text-xs text-[#c1d0ba]"><p>© 2026 Nikita Makeev</p><p>Эстония · Работаю удалённо</p></div>
+    </div>
+  </footer>
+</body>
+</html>
