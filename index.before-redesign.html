@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Nikita Makeev — Full-Stack developer. AI integrations, workflow automation and web applications that help businesses retain customers.">
+  <title>Nikita Makeev — AI &amp; Full-Stack Developer</title>
+  <!-- Tailwind Play CDN: https://tailwindcss.com/docs/installation/play-cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f6f7f2; color: #183c32; }
+    ::selection { background: #d6f275; color: #183c32; }
+    a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px solid #35755c; outline-offset: 5px; }
+    .project-track { scrollbar-width: thin; scrollbar-color: #668574 #e3e8de; }
+    .project-track > article { scroll-snap-align: start; }
+    .preview-grid { background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 24px 24px; }
+    .tag { display: inline-block; border: 1px solid #dce2d6; border-radius: 8px; padding: 7px 11px; font-size: 14px; color: #3d5146; background: #fff; }
+
+    .language-switcher { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid #d4dccf; border-radius: 12px; background: #fff; }
+    .language-switcher[hidden] { display: none; }
+    .language-switcher button { min-width: 44px; min-height: 40px; border-radius: 8px; color: #526257; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+    .language-switcher button[aria-pressed="true"] { color: #d6f275; background: #183c32; }
+    .language-switcher button:active { transform: scale(.94); }
+    .contact-button { transition: transform .25s, box-shadow .25s, background-color .25s; }
+    .contact-button:active { transform: scale(.98); }
+    .github-button svg { flex-shrink: 0; }
+    .hero-enter { animation: enter .8s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-delay { animation-delay: .12s; }
+    .reveal { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+    .reveal.waiting { opacity: 0; transform: translateY(22px); }
+    .reveal:focus-within { opacity: 1; transform: none; }
+    figure .illustration { animation: float 7s ease-in-out infinite; animation-play-state: paused; }
+    figure.in-view .illustration { animation-play-state: running; }
+    article:nth-child(2) .illustration { animation-delay: -2s; }
+    article:nth-child(3) .illustration { animation-delay: -4s; }
+    .language-change { animation: language-in .25s ease-out; }
+    .tag { transition: transform .2s, border-color .2s, background-color .2s; }
+    @keyframes enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+    @keyframes language-in { from { opacity: .55; translate: 0 3px; } to { opacity: 1; translate: 0 0; } }
+    @media (hover: hover) {
+      .contact-button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #183c3217; }
+      .github-button:hover { background-color: #e3fa9e; box-shadow: 0 8px 24px #a4c45035; }
+      .project-track article:hover { transform: translateY(-4px); box-shadow: 0 10px 28px #183c3210; }
+      .tag:hover { transform: translateY(-3px); background: #eff4e8; border-color: #a9bd93; }
+      .language-switcher button:not([aria-pressed="true"]):hover { background: #eff4e8; }
+    }
+    @media (prefers-reduced-motion: reduce) { .reveal.waiting { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body class="antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:p-4"><span data-i18n="skip">Skip to content</span></a>
+
+  <header class="mx-auto flex flex-wrap max-w-6xl items-center justify-between gap-3 px-5 py-4 md:px-8 md:py-6">
+    <a href="#main" data-i18n-aria="home" aria-label="Nikita Makeev — home" class="flex min-h-11 items-center gap-3 font-semibold tracking-tight">
+      <span aria-hidden="true" class="flex size-9 items-center justify-center rounded-xl bg-[#183c32] text-sm text-[#d6f275]">nm.</span>
+      <span>Nikita Makeev<span class="block text-xs font-normal tracking-normal text-[#5b6b60]">Full-Stack · AI &amp; Automation</span></span>
+    </a>
+    <nav data-i18n-aria="nav" aria-label="Main navigation" class="flex w-full items-center justify-between gap-3 text-sm font-medium md:w-auto md:justify-end md:gap-5">
+      <a href="#projects" class="flex min-h-11 items-center underline-offset-4 hover:underline"><span data-i18n="projectsNav">Projects</span> <span aria-hidden="true" class="ml-1">↗</span></a>
+      <a href="#skills" class="hidden min-h-11 items-center underline-offset-4 hover:underline md:flex"><span data-i18n="skillsNav">Skills</span></a>
+    <div id="language-switcher" class="language-switcher" role="group" data-i18n-aria="language" aria-label="Choose language" hidden>
+        <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+        <button type="button" data-lang="et" lang="et" aria-label="Eesti" aria-pressed="false">ET</button>
+        <button type="button" data-lang="ru" lang="ru" aria-label="Русский" aria-pressed="false">RU</button>
+      </div></nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="hero-title" class="mx-auto max-w-6xl px-5 pt-3 pb-8 md:px-8 md:pt-14 md:pb-16">
+      <div class="grid items-end gap-5 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+        <div>
+          <p class="mb-4 flex items-center gap-2 text-xs font-medium uppercase tracking-[.14em] text-[#536556]">
+            <span aria-hidden="true" class="size-1.5 rounded-full bg-[#4e7354]"></span> <span data-i18n="eyebrow">Software for your business</span>
+          </p>
+          <h1 id="hero-title" class="hero-enter max-w-3xl text-[clamp(1.9rem,8vw,3rem)] leading-[1.08] font-semibold tracking-[-.055em] md:text-6xl lg:text-[4.2rem]">
+            <span data-i18n="heroOne">Less busywork.</span><br><span class="text-[#577b2d]"><span data-i18n="heroTwo">More customers.</span></span>
+          </h1>
+          <p class="hero-enter hero-delay mt-4 max-w-xl text-base leading-relaxed text-[#526257] md:text-lg">
+            <span data-i18n="intro">I build web systems, connect CRMs and integrate AI so leads stay on track and your team works faster.</span>
+          </p>
+          <p class="mt-4 text-xs font-medium tracking-wide text-[#5b6b60] md:text-sm">React · Node.js · Go <span class="mx-2 text-[#a3af9a]">/</span> Claude · GPT · Gemini</p>
+        </div>
+        <div>
+          <p class="mb-3 hidden text-sm text-[#5b6b60] lg:block"><span data-i18n="start">Let’s start with your business challenge</span></p>
+          <div id="hero-contacts" class="hero-enter hero-delay grid grid-cols-2 gap-2.5">
+            <a href="mailto:nikita.makeev.dev@gmail.com" class="contact-button col-span-2 flex min-h-14 items-center justify-center gap-3 rounded-xl bg-[#183c32] px-5 py-3 text-base font-medium text-white transition-colors hover:bg-[#2b5144]">
+              <span><span data-i18n="email">Let’s talk</span> <span class="ml-1 text-xs font-normal text-[#c5d5c7]">/ Email</span></span>
+            </a>
+            <a href="tel:+37256816367" data-i18n-aria="call" aria-label="Call +372 5681 6367" class="contact-button flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d4dccf] bg-white px-3 py-3 text-sm font-medium transition-colors hover:bg-[#eaf0e3]"><span data-i18n="phone">Phone</span> </a>
+            <a href="https://www.linkedin.com/in/nikita-makeev-b89400331" target="_blank" rel="noopener noreferrer" data-i18n-aria="linkedin" aria-label="LinkedIn — opens in a new tab" class="contact-button flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d4dccf] bg-white px-3 py-3 text-sm font-medium transition-colors hover:bg-[#eaf0e3]">LinkedIn </a>
+          </div>
+          <a id="hero-github" href="https://github.com/NikitaMakeev" target="_blank" rel="noopener noreferrer" data-i18n-aria="github" aria-label="GitHub profile — opens in a new tab" class="contact-button github-button mt-2.5 flex min-h-12 items-center justify-center gap-2.5 rounded-xl border border-[#bad477] bg-[#d6f275] px-4 py-3 text-sm font-semibold text-[#183c32]"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.71.08-.7.08-.7 1.13.08 1.72 1.16 1.72 1.16 1.01 1.72 2.64 1.22 3.29.93.1-.73.4-1.22.72-1.5-2.5-.28-5.12-1.25-5.12-5.57 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.16a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.16 3.08-1.16.61 1.55.23 2.7.11 2.98.72.79 1.15 1.79 1.15 3.02 0 4.33-2.62 5.28-5.13 5.56.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span data-i18n="githubText">Explore my GitHub</span></a>
+          <p class="mt-3 text-center text-xs text-[#5b6b60]"><span data-i18n="location">Estonia · Remote</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title" class="border-y border-[#dce2d6] bg-white/60 py-10 md:py-16">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="mb-2 text-xs font-medium uppercase tracking-[.16em] text-[#65765f]"><span data-i18n="workLabel">01 / Selected work</span></p>
+            <h2 id="projects-title" class="text-3xl font-semibold tracking-[-.04em] md:text-4xl"><span data-i18n="workTitle">From a challenge to a working system.</span></h2>
+          </div>
+          <span aria-hidden="true" class="text-sm text-[#6b7a63]">2022 — 2026</span>
+        </div>
+        <p class="mt-4 max-w-2xl text-sm leading-relaxed text-[#5b6b60]"><span data-i18n="nda">Source code is protected by NDA. Here you’ll find my contributions and public websites only. Visuals are illustrative mockups with no client data.</span></p>
+        <p id="swipe-hint" class="mt-5 text-xs text-[#5b6b60] lg:hidden"><span data-i18n="swipe">Swipe to explore projects</span> <span aria-hidden="true">→</span></p>
+
+        <div class="project-track mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 lg:mt-7 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible" tabindex="0" role="region" data-i18n-aria="cases" aria-label="Projects: scroll horizontally on small screens">
+          <article class="reveal flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <!-- Replace this figure with an approved 16:9 screenshot when available. -->
+            <figure class="preview-grid relative flex aspect-video items-center justify-center overflow-hidden bg-[#1d3834] p-6" data-i18n-aria="figureTournament" aria-label="Illustrative tournament bracket">
+              <div aria-hidden="true" class="illustration flex w-full max-w-64 items-center text-[#d6f275]">
+                <div class="w-2/5 space-y-5"><div class="rounded-md border border-white/20 bg-white/5 p-3"><div class="h-1.5 w-3/4 rounded bg-white/40"></div></div><div class="rounded-md border border-white/20 bg-white/5 p-3"><div class="h-1.5 w-2/3 rounded bg-white/40"></div></div></div>
+                <div class="h-14 w-7 rounded-r-lg border-y border-r border-[#d6f275]/60"></div><div class="h-px w-5 bg-[#d6f275]/60"></div><div class="flex h-14 flex-1 items-center justify-center rounded-lg border border-[#d6f275]/50 bg-[#d6f275]/10 text-xl">★</div>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#c3d2c8]"><span data-i18n="conceptTournament">Concept / Tournament system</span></figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#c3d2c8]">01</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]"><span data-i18n="delivery">Architecture · Development · Launch</span></p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight"><span data-i18n="tournamentTitle">Esports Tournament Platform</span></h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="challenge">Challenge:</span></strong> <span data-i18n="tournamentTask">launch an esports tournament platform with prize pools.</span></p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="contribution">My contribution:</span></strong> <span data-i18n="tournamentWork">designed the architecture and connected the frontend, backend and database. Delivered the production launch and maintained platform stability.</span></p>
+              <div class="mt-auto pt-6"><p class="flex min-h-12 items-center border-t border-[#e5e9e0] pt-3 text-xs text-[#64735f]"><span data-i18n="private">No public website shared</span></p></div>
+            </div>
+          </article>
+
+          <article class="reveal flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <figure class="relative flex aspect-video items-center justify-center overflow-hidden bg-[#e5e9de] p-7" data-i18n-aria="figurePhotos" aria-label="Illustrative photo gallery">
+              <div aria-hidden="true" class="illustration grid w-full max-w-60 rotate-[-4deg] grid-cols-3 gap-2 rounded-xl border border-white/80 bg-white/70 p-3 shadow-lg shadow-[#183c32]/10">
+                <div class="col-span-3 mb-1 flex items-center gap-1"><span class="size-1 rounded-full bg-[#769165]"></span><span class="h-1 w-12 rounded bg-[#b7c6ac]"></span></div>
+                <div class="relative aspect-square overflow-hidden rounded bg-[#b6c9ac]"><div class="absolute -bottom-4 left-0 size-14 rotate-45 bg-[#51715c]"></div><div class="absolute top-2 right-2 size-3 rounded-full bg-[#f5edc2]"></div></div>
+                <div class="aspect-square rounded bg-[#d0b99a]"></div><div class="aspect-square rounded bg-[#739394]"></div><div class="aspect-square rounded bg-[#b1bfa4]"></div><div class="aspect-square rounded bg-[#e3d9bb]"></div><div class="aspect-square rounded bg-[#839e87]"></div>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#526257]"><span data-i18n="conceptPhotos">Concept / Photo library</span></figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#526257]">02</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]">Go · Flutter · Full-Stack</p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight"><span data-i18n="photosTitle">Photo Storage Application</span></h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="challenge">Challenge:</span></strong> <span data-i18n="photoTask">build a Google Photos-style web application for photo storage.</span></p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="contribution">My contribution:</span></strong> <span data-i18n="photoWork">independently built the Go backend and Flutter frontend, connecting them into a complete application.</span></p>
+              <div class="mt-auto pt-6"><p class="flex min-h-12 items-center border-t border-[#e5e9e0] pt-3 text-xs text-[#64735f]"><span data-i18n="private">No public website shared</span></p></div>
+            </div>
+          </article>
+
+          <article class="reveal flex w-[88%] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#dce2d6] bg-white md:w-[60%] lg:w-auto">
+            <figure class="relative flex aspect-video items-center justify-center overflow-hidden bg-[#edf0d8] p-6" data-i18n-aria="figureCRM" aria-label="Illustrative website-to-CRM lead flow">
+              <div aria-hidden="true" class="illustration flex w-full max-w-64 items-center justify-center gap-3">
+                <div class="flex size-16 flex-col justify-center gap-2 rounded-xl border border-[#d0d7b8] bg-white p-4 shadow-sm"><div class="h-1 rounded bg-[#b6c2a3]"></div><div class="h-1 rounded bg-[#b6c2a3]"></div><div class="h-2 rounded bg-[#7f9b50]"></div></div>
+                <span class="text-xl text-[#728152]">→</span><div class="flex size-20 items-center justify-center rounded-2xl bg-[#244a3c] font-mono text-base text-[#d6f275]">CRM</div><span class="text-xl text-[#728152]">✓</span>
+              </div>
+              <figcaption class="absolute bottom-3 left-4 text-[10px] uppercase tracking-[.15em] text-[#526257]"><span data-i18n="conceptCRM">Concept / Lead tracking</span></figcaption>
+              <span aria-hidden="true" class="absolute top-3 right-4 font-mono text-xs text-[#526257]">03</span>
+            </figure>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <p class="text-xs font-medium uppercase tracking-wider text-[#637a54]"><span data-i18n="crmLabel">Bitrix CRM · Lead tracking</span></p>
+              <h3 class="mt-3 text-xl leading-tight font-semibold tracking-tight"><span data-i18n="crmTitle">Lead Tracking for ivkoolitus.ee</span></h3>
+              <p class="mt-4 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="challenge">Challenge:</span></strong> <span data-i18n="crmTask">organise incoming lead tracking for an education centre.</span></p>
+              <p class="mt-3 text-sm leading-relaxed text-[#5b6b60]"><strong class="font-medium text-[#294c3c]"><span data-i18n="contribution">My contribution:</span></strong> <span data-i18n="crmWork">set up lead tracking in Bitrix CRM so the team could manage enquiries in one system.</span></p>
+              <div class="mt-auto pt-6"><a href="https://ivkoolitus.ee/" target="_blank" rel="noopener noreferrer" data-i18n-aria="visitLabel" aria-label="Visit ivkoolitus.ee — opens in a new tab" class="flex min-h-12 items-center justify-between rounded-lg bg-[#eff4e8] px-4 py-3 text-sm font-medium transition-colors hover:bg-[#e0ebd3]"><span><span data-i18n="visit">Visit Website</span></span><span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title" class="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-16">
+      <p class="mb-2 text-xs font-medium uppercase tracking-[.16em] text-[#65765f]"><span data-i18n="toolsLabel">02 / Toolkit</span></p>
+      <h2 id="skills-title" class="text-3xl font-semibold tracking-[-.04em] md:text-4xl"><span data-i18n="toolsTitle">The right tools for your challenge.</span></h2>
+      <div class="reveal mt-7 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div>
+          <h3 class="text-lg font-semibold"><span data-i18n="aiHeading">AI &amp; Automation</span></h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-[#5b6b60]"><span data-i18n="aiText">I connect models, services and data to reduce manual work.</span></p>
+          <ul data-i18n-aria="aiSkills" aria-label="AI and automation skills" class="mt-4 flex flex-wrap gap-2">
+            <li class="tag">Claude</li><li class="tag">GPT</li><li class="tag">Gemini</li><li class="tag">LLM APIs</li><li class="tag"><span data-i18n="prompts">Prompt Engineering</span></li><li class="tag"><span data-i18n="workflows">Workflow Automation</span></li><li class="tag"><span data-i18n="crmSkill">CRM Integrations</span></li><li class="tag">Webhooks</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold"><span data-i18n="devHeading">Full-Stack Development</span></h3>
+          <p class="mt-2 max-w-md text-sm leading-relaxed text-[#5b6b60]"><span data-i18n="devText">I handle the full cycle, from interfaces and architecture to integrations and launch.</span></p>
+          <ul data-i18n-aria="devSkills" aria-label="Development skills" class="mt-4 flex flex-wrap gap-2">
+            <li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Go</li><li class="tag">TypeScript</li><li class="tag">Vue</li><li class="tag">Flutter</li><li class="tag">Java</li><li class="tag">REST APIs</li><li class="tag">PostgreSQL</li><li class="tag">MariaDB</li><li class="tag">Tailwind CSS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-[#183c32] text-white">
+    <div class="mx-auto max-w-6xl px-5 pt-10 pb-5 md:px-8 md:pt-14">
+      <div class="reveal grid gap-7 md:grid-cols-2 md:gap-12">
+        <div>
+          <p class="mb-3 text-xs font-medium uppercase tracking-[.16em] text-[#c1d0ba]"><span data-i18n="contactLabel">03 / Let’s talk</span></p>
+          <h2 class="max-w-lg text-3xl leading-tight font-semibold tracking-[-.04em] md:text-4xl"><span data-i18n="footerOne">Where is your business</span><br><span class="text-[#d6f275]"><span data-i18n="footerTwo">losing time and leads?</span></span></h2>
+          <p class="mt-4 max-w-md text-sm leading-relaxed text-[#c7d4ca]"><span data-i18n="contactText">Tell me about your challenge and current workflow. We’ll identify what to automate first.</span></p>
+        </div>
+        <address class="flex flex-col gap-2 not-italic md:justify-center">
+          <a href="mailto:nikita.makeev.dev@gmail.com" class="contact-button flex min-h-14 items-center justify-center gap-3 rounded-xl bg-[#d6f275] px-4 py-3 text-sm font-semibold text-[#183c32] transition-colors hover:bg-[#e3fa9e] md:text-base"><span class="break-all">nikita.makeev.dev@gmail.com</span></a>
+          <a href="tel:+37256816367" class="contact-button flex min-h-12 items-center justify-center rounded-xl border border-[#597567] px-4 py-3 text-sm transition-colors hover:bg-white/10"><span>+372 5681 6367</span></a>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="https://www.linkedin.com/in/nikita-makeev-b89400331" target="_blank" rel="noopener noreferrer" data-i18n-aria="linkedin" aria-label="LinkedIn — opens in a new tab" class="contact-button flex min-h-12 items-center justify-center rounded-xl border border-[#597567] px-4 py-3 text-sm transition-colors hover:bg-white/10">LinkedIn </a>
+            <a href="https://github.com/NikitaMakeev" target="_blank" rel="noopener noreferrer" data-i18n-aria="github" aria-label="GitHub profile — opens in a new tab" class="contact-button flex min-h-12 items-center justify-center rounded-xl border border-[#bad477] bg-[#d6f275] text-[#183c32] gap-2 font-semibold github-button px-4 py-3 text-sm transition-colors hover:bg-[#e3fa9e]"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.09c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.71.08-.7.08-.7 1.13.08 1.72 1.16 1.72 1.16 1.01 1.72 2.64 1.22 3.29.93.1-.73.4-1.22.72-1.5-2.5-.28-5.12-1.25-5.12-5.57 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .94-.3 3.08 1.16a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.16 3.08-1.16.61 1.55.23 2.7.11 2.98.72.79 1.15 1.79 1.15 3.02 0 4.33-2.62 5.28-5.13 5.56.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub</span></a>
+          </div>
+        </address>
+      </div>
+      <div class="mt-10 flex flex-wrap justify-between gap-2 border-t border-white/15 pt-5 text-xs text-[#c1d0ba]"><p>© 2026 Nikita Makeev</p><p><span data-i18n="footerLocation">Based in Estonia · Working remotely</span></p></div>
+    </div>
+  </footer>
+
+  <p id="language-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  <script>
+    (() => {
+      'use strict';
+      const translations = {
+  "en": {
+    "meta": "Nikita Makeev — Full-Stack developer. AI integrations, workflow automation and web applications that help businesses retain customers.",
+    "skip": "Skip to content",
+    "projectsNav": "Projects",
+    "skillsNav": "Skills",
+    "eyebrow": "Software for your business",
+    "intro": "I build web systems, connect CRMs and integrate AI so leads stay on track and your team works faster.",
+    "start": "Let’s start with your business challenge",
+    "email": "Let’s talk",
+    "phone": "Phone",
+    "location": "Estonia · Remote",
+    "workLabel": "01 / Selected work",
+    "workTitle": "From a challenge to a working system.",
+    "nda": "Source code is protected by NDA. Here you’ll find my contributions and public websites only. Visuals are illustrative mockups with no client data.",
+    "swipe": "Swipe to explore projects",
+    "conceptTournament": "Concept / Tournament system",
+    "conceptPhotos": "Concept / Photo library",
+    "conceptCRM": "Concept / Lead tracking",
+    "delivery": "Architecture · Development · Launch",
+    "challenge": "Challenge:",
+    "contribution": "My contribution:",
+    "tournamentTask": "launch an esports tournament platform with prize pools.",
+    "tournamentWork": "designed the architecture and connected the frontend, backend and database. Delivered the production launch and maintained platform stability.",
+    "private": "No public website shared",
+    "photoTask": "build a Google Photos-style web application for photo storage.",
+    "photoWork": "independently built the Go backend and Flutter frontend, connecting them into a complete application.",
+    "crmLabel": "Bitrix CRM · Lead tracking",
+    "crmTask": "organise incoming lead tracking for an education centre.",
+    "crmWork": "set up lead tracking in Bitrix CRM so the team could manage enquiries in one system.",
+    "toolsLabel": "02 / Toolkit",
+    "toolsTitle": "The right tools for your challenge.",
+    "aiText": "I connect models, services and data to reduce manual work.",
+    "devText": "I handle the full cycle, from interfaces and architecture to integrations and launch.",
+    "contactLabel": "03 / Let’s talk",
+    "contactText": "Tell me about your challenge and current workflow. We’ll identify what to automate first.",
+    "footerLocation": "Based in Estonia · Working remotely",
+    "heroOne": "Less busywork.",
+    "heroTwo": "More customers.",
+    "footerOne": "Where is your business",
+    "footerTwo": "losing time and leads?",
+    "home": "Nikita Makeev — home",
+    "nav": "Main navigation",
+    "call": "Call +372 5681 6367",
+    "linkedin": "LinkedIn — opens in a new tab",
+    "github": "GitHub profile — opens in a new tab",
+    "cases": "Projects: scroll horizontally on small screens",
+    "figureTournament": "Illustrative tournament bracket",
+    "figurePhotos": "Illustrative photo gallery",
+    "figureCRM": "Illustrative website-to-CRM lead flow",
+    "visitLabel": "Visit ivkoolitus.ee — opens in a new tab",
+    "aiSkills": "AI and automation skills",
+    "devSkills": "Development skills",
+    "tournamentTitle": "Esports Tournament Platform",
+    "photosTitle": "Photo Storage Application",
+    "crmTitle": "Lead Tracking for ivkoolitus.ee",
+    "aiHeading": "AI & Automation",
+    "devHeading": "Full-Stack Development",
+    "visit": "Visit Website",
+    "prompts": "Prompt Engineering",
+    "workflows": "Workflow Automation",
+    "crmSkill": "CRM Integrations",
+    "githubText": "Explore my GitHub",
+    "language": "Choose language",
+    "languageChanged": "Language changed to English."
+  },
+  "et": {
+    "meta": "Nikita Makeev — täispinu arendaja. Tehisintellekti integratsioonid, tööprotsesside automatiseerimine ja veebirakendused, mis aitavad ettevõtetel kliente hoida.",
+    "skip": "Liigu sisu juurde",
+    "projectsNav": "Projektid",
+    "skillsNav": "Oskused",
+    "eyebrow": "Tarkvara sinu ettevõttele",
+    "intro": "Loon veebisüsteeme, ühendan CRM-e ja rakendan tehisintellekti, et päringud ei kaoks ning meeskond töötaks kiiremini.",
+    "start": "Alustame sinu ettevõtte vajadusest",
+    "email": "Arutame sinu projekti",
+    "phone": "Telefon",
+    "location": "Eesti · Kaugtöö",
+    "workLabel": "01 / Valitud tööd",
+    "workTitle": "Vajadusest toimiva süsteemini.",
+    "nda": "Lähtekood on kaitstud konfidentsiaalsuslepinguga. Siin on minu töö kirjeldused ja lingid avalikele veebilehtedele. Visuaalid on näidismaketid ega sisalda kliendiandmeid.",
+    "swipe": "Projektide vaatamiseks libista",
+    "conceptTournament": "Näidismakett / Turniirisüsteem",
+    "conceptPhotos": "Näidismakett / Fotokogu",
+    "conceptCRM": "Näidismakett / Päringute haldus",
+    "delivery": "Arhitektuur · Arendus · Käivitus",
+    "challenge": "Ülesanne:",
+    "contribution": "Minu panus:",
+    "tournamentTask": "käivitada auhinnafondidega e-sporditurniiride platvorm.",
+    "tournamentWork": "kavandasin arhitektuuri ning ühendasin kasutajaliidese, serveri ja andmebaasi. Viisin platvormi kasutuselevõtuni ja tagasin selle stabiilsuse.",
+    "private": "Avalik veebileht puudub",
+    "photoTask": "luua Google Photosi laadne veebirakendus fotode hoidmiseks.",
+    "photoWork": "arendasin iseseisvalt Go serveripoole ja Flutteri kasutajaliidese ning ühendasin need terviklikuks rakenduseks.",
+    "crmLabel": "Bitrix CRM · Päringute haldus",
+    "crmTask": "korraldada koolituskeskuse saabuvate päringute haldus.",
+    "crmWork": "seadistasin Bitrix CRM-is päringute jälgimise, et meeskond saaks pöördumisi hallata ühes süsteemis.",
+    "toolsLabel": "02 / Tööriistad",
+    "toolsTitle": "Sinu vajadustele sobivad tehnoloogiad.",
+    "aiText": "Ühendan mudelid, teenused ja andmed, et vähendada käsitsi tehtavat tööd.",
+    "devText": "Võtan enda kanda kogu arendustsükli: kasutajaliidesest ja arhitektuurist integratsioonide ning käivitamiseni.",
+    "contactLabel": "03 / Võtame ühendust",
+    "contactText": "Räägi oma vajadusest ja praegusest tööprotsessist. Leiame koos, mida tasub esimesena automatiseerida.",
+    "footerLocation": "Asun Eestis · Töötan kaugtööna",
+    "heroOne": "Vähem rutiini.",
+    "heroTwo": "Rohkem kliente.",
+    "footerOne": "Kuhu kaovad sinu ettevõtte",
+    "footerTwo": "aeg ja kliendipäringud?",
+    "home": "Nikita Makeev — avaleht",
+    "nav": "Põhinavigatsioon",
+    "call": "Helista +372 5681 6367",
+    "linkedin": "LinkedIn — avaneb uuel vahelehel",
+    "github": "GitHubi profiil — avaneb uuel vahelehel",
+    "cases": "Projektid: väikestel ekraanidel keri horisontaalselt",
+    "figureTournament": "Turniiritabeli näidismakett",
+    "figurePhotos": "Fotogalerii näidismakett",
+    "figureCRM": "Näidisskeem päringu liikumisest veebilehelt CRM-i",
+    "visitLabel": "Ava ivkoolitus.ee — avaneb uuel vahelehel",
+    "aiSkills": "Tehisintellekti ja automatiseerimise oskused",
+    "devSkills": "Arendusoskused",
+    "tournamentTitle": "E-sporditurniiride platvorm",
+    "photosTitle": "Fotode hoidmise rakendus",
+    "crmTitle": "ivkoolitus.ee päringute haldus",
+    "aiHeading": "Tehisintellekt ja automatiseerimine",
+    "devHeading": "Täispinu arendus",
+    "visit": "Vaata veebilehte",
+    "prompts": "Viipade koostamine",
+    "workflows": "Töövoogude automatiseerimine",
+    "crmSkill": "CRM-i integratsioonid",
+    "githubText": "Vaata minu GitHubi",
+    "language": "Vali keel",
+    "languageChanged": "Keeleks on valitud eesti keel."
+  },
+  "ru": {
+    "meta": "Nikita Makeev — Full-Stack разработчик. ИИ-интеграции, автоматизация процессов и веб-приложения, которые помогают бизнесу сохранять клиентов.",
+    "skip": "Перейти к содержанию",
+    "projectsNav": "Проекты",
+    "skillsNav": "Навыки",
+    "eyebrow": "Разработка для бизнеса",
+    "intro": "Создаю веб-системы, связываю CRM и внедряю ИИ, чтобы заявки не терялись, а команда работала быстрее.",
+    "start": "Начнём с вашей бизнес-задачи",
+    "email": "Обсудить задачу",
+    "phone": "Телефон",
+    "location": "Эстония · Удалённо",
+    "workLabel": "01 / Избранные работы",
+    "workTitle": "От задачи до работающей системы.",
+    "nda": "Исходный код защищён NDA. Здесь — описание моей работы и ссылки только на публичные сайты. Иллюстрации — условные макеты, без данных клиентов.",
+    "swipe": "Листайте проекты в сторону",
+    "conceptTournament": "Концепт / Tournament system",
+    "conceptPhotos": "Концепт / Photo library",
+    "conceptCRM": "Концепт / Lead tracking",
+    "delivery": "Архитектура · Разработка · Запуск",
+    "challenge": "Задача:",
+    "contribution": "Моя работа:",
+    "tournamentTask": "запустить платформу киберспортивных турниров с призовыми фондами.",
+    "tournamentWork": "спроектировал архитектуру, связал интерфейс, сервер и базу данных. Довёл систему до запуска и поддерживал её стабильность.",
+    "private": "Публичная ссылка не представлена",
+    "photoTask": "создать веб-приложение для хранения фотографий по принципу Google Photos.",
+    "photoWork": "самостоятельно разработал серверную часть на Go и интерфейс на Flutter, объединив их в полноценное приложение.",
+    "crmLabel": "Bitrix CRM · Учёт заявок",
+    "crmTask": "организовать учёт входящих заявок для образовательного центра.",
+    "crmWork": "настроил отслеживание лидов в Bitrix CRM, чтобы команда могла управлять обращениями в единой системе.",
+    "toolsLabel": "02 / Инструменты",
+    "toolsTitle": "Технологии под вашу задачу.",
+    "aiText": "Связываю модели, сервисы и данные, чтобы сократить ручную работу.",
+    "devText": "Беру на себя весь цикл: от интерфейса и архитектуры до интеграций и запуска.",
+    "contactLabel": "03 / Давайте обсудим",
+    "contactText": "Расскажите о задаче и текущем процессе. Вместе определим, что стоит автоматизировать первым.",
+    "footerLocation": "Эстония · Работаю удалённо",
+    "heroOne": "Меньше рутины.",
+    "heroTwo": "Больше клиентов.",
+    "footerOne": "Где ваш бизнес",
+    "footerTwo": "теряет время и заявки?",
+    "home": "Nikita Makeev — на главную",
+    "nav": "Основная навигация",
+    "call": "Позвонить: +372 5681 6367",
+    "linkedin": "LinkedIn — откроется в новой вкладке",
+    "github": "Профиль GitHub — откроется в новой вкладке",
+    "cases": "Кейсы: горизонтальная прокрутка на небольших экранах",
+    "figureTournament": "Условная иллюстрация турнирной сетки",
+    "figurePhotos": "Условная иллюстрация галереи фотографий",
+    "figureCRM": "Условная схема передачи заявки с сайта в CRM",
+    "visitLabel": "Visit Website — ivkoolitus.ee, в новой вкладке",
+    "aiSkills": "Навыки ИИ и автоматизации",
+    "devSkills": "Навыки разработки",
+    "tournamentTitle": "Платформа киберспортивных турниров",
+    "photosTitle": "Приложение для хранения фотографий",
+    "crmTitle": "Учёт заявок для ivkoolitus.ee",
+    "aiHeading": "ИИ и автоматизация",
+    "devHeading": "Full-Stack разработка",
+    "visit": "Посетить сайт",
+    "prompts": "Промпт-инжиниринг",
+    "workflows": "Автоматизация процессов",
+    "crmSkill": "Интеграции CRM",
+    "githubText": "Мой профиль GitHub",
+    "language": "Выберите язык",
+    "languageChanged": "Выбран русский язык."
+  }
+};
+      const buttons = document.querySelectorAll('[data-lang]');
+      const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let currentLanguage = 'en';
+      function setLanguage(language, announce = false) {
+        if (!Object.prototype.hasOwnProperty.call(translations, language)) return;
+        const copy = translations[language];
+        const changed = language !== currentLanguage;
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const value = copy[element.dataset.i18n];
+          if (typeof value === 'string') element.textContent = value;
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+          const value = copy[element.dataset.i18nAria];
+          if (typeof value === 'string') element.setAttribute('aria-label', value);
+        });
+        document.documentElement.lang = language;
+        document.querySelector('meta[name="description"]').content = copy.meta;
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === language)));
+        currentLanguage = language;
+        if (announce) {
+          try { localStorage.setItem('portfolio-language', language); } catch { /* Storage may be unavailable. */ }
+          document.getElementById('language-status').textContent = copy.languageChanged;
+        }
+        if (announce && changed && !motion.matches) {
+          const main = document.querySelector('main');
+          main.classList.remove('language-change');
+          void main.offsetWidth;
+          main.classList.add('language-change');
+        }
+      }
+      let savedLanguage = 'en';
+      try { savedLanguage = localStorage.getItem('portfolio-language') || 'en'; } catch { /* English is the default. */ }
+      setLanguage(Object.prototype.hasOwnProperty.call(translations, savedLanguage) ? savedLanguage : 'en');
+      buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang, true)));
+      document.getElementById('language-switcher').hidden = false;
+
+      if ('IntersectionObserver' in window) {
+        const reveal = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove('waiting');
+              reveal.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(element => {
+          if (!motion.matches && element.getBoundingClientRect().top > innerHeight) element.classList.add('waiting');
+          reveal.observe(element);
+        });
+        const figures = new IntersectionObserver(entries => {
+          entries.forEach(entry => entry.target.classList.toggle('in-view', entry.isIntersecting));
+        });
+        document.querySelectorAll('figure').forEach(figure => figures.observe(figure));
+        motion.addEventListener('change', () => {
+          if (motion.matches) document.querySelectorAll('.waiting').forEach(element => element.classList.remove('waiting'));
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

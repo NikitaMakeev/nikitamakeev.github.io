@@ -1,8 +1,11 @@
-import asyncio, base64, json, subprocess, time, urllib.request
+import asyncio, base64, json, subprocess, time, urllib.request, os, tempfile
 from pathlib import Path
 import websockets
 
 root = Path(__file__).resolve().parent
+temporary_data=tempfile.TemporaryDirectory(prefix='browser-form-test-',dir=root)
+server_env=os.environ.copy();server_env.update(PORT='3020',HOST='127.0.0.1',DATA_DIR=temporary_data.name)
+form_server=subprocess.Popen(['node',str(root/'server.mjs')],env=server_env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,creationflags=0x08000000)
 proc = subprocess.Popen([
     r'C:\Program Files\Google\Chrome\Application\chrome.exe',
     '--headless', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
@@ -28,7 +31,7 @@ async def main():
                     if 'error' in message: raise RuntimeError(message)
                     return message.get('result',{})
         await call('Page.enable')
-        await call('Page.navigate', {'url':(root/'index.html').as_uri()})
+        await call('Page.navigate', {'url':'http://127.0.0.1:3020/'})
         for _ in range(60):
             ready=await call('Runtime.evaluate', {'expression':'document.querySelector("#hero-contacts") && getComputedStyle(document.querySelector("#hero-contacts")).display === "grid"','returnByValue':True})
             if ready['result'].get('value'): break
@@ -71,7 +74,41 @@ async def main():
         await call('Page.reload')
         await asyncio.sleep(1)
         assert await evaluate('document.documentElement.lang')=='en','English not default'
-        print('PASS: all languages, saved selection, English default, contact links, NDA, reduced motion.',flush=True)
+        assert await evaluate('document.querySelector(".portrait-photo").naturalWidth')==1122
+        assert await evaluate('document.querySelectorAll(".tech-tag svg").length')==9
+        assert await evaluate('document.querySelector("#inquiry-submit").disabled') is False
+        await evaluate('document.querySelector("#inquiry-name").value="Browser QA";document.querySelector("#inquiry-email").value="qa@example.com";document.querySelector("#inquiry-message").value="Synthetic browser test only, not a real lead.";document.querySelector("#inquiry-submit").click()')
+        for _ in range(30):
+            if await evaluate('document.querySelector("#form-status").textContent.startsWith("Request received")'):break
+            await asyncio.sleep(.2)
+        else:raise AssertionError('Form did not report successful save')
+        entries=Path(temporary_data.name,'inquiries.ndjson').read_text().splitlines()
+        assert len(entries)==1
+        assert json.loads(entries[0])['email']=='qa@example.com'
+        assert await evaluate('document.querySelector("#inquiry-message").value')==''
+        await call('Network.enable')
+        await call('Network.setBlockedURLs',{'urls':['*api/inquiries*']})
+        await evaluate('document.querySelector("#inquiry-email").value="qa@example.com";document.querySelector("#inquiry-message").value="This text must survive a failed request.";document.querySelector("#inquiry-submit").click()')
+        for _ in range(30):
+            if await evaluate('document.querySelector("#form-status").dataset.error==="true"'):break
+            await asyncio.sleep(.2)
+        else:raise AssertionError('Form did not report request failure')
+        assert await evaluate('document.querySelector("#inquiry-message").value')=='This text must survive a failed request.'
+        assert await evaluate('document.querySelector("#inquiry-submit").disabled') is False
+        await call('Network.setBlockedURLs',{'urls':[]})
+        await evaluate('document.querySelector("#inquiry-form").reset();document.querySelector("#form-status").textContent=""')
+        for width,height in [(390,844),(1440,1000)]:
+            await call('Emulation.setDeviceMetricsOverride',{'width':width,'height':height,'deviceScaleFactor':1,'mobile':True})
+            for area in ['projects','contact']:
+                await evaluate(f'document.getElementById("{area}").scrollIntoView()')
+                await asyncio.sleep(.2)
+                shot=await call('Page.captureScreenshot',{'format':'png','captureBeyondViewport':False})
+                (root/f'preview-{area}-{width}.png').write_bytes(base64.b64decode(shot['data']))
+        await call('Page.navigate',{'url':(root/'index.html').as_uri()})
+        await asyncio.sleep(1)
+        assert await evaluate('document.querySelector("#inquiry-submit").disabled') is True
+        assert await evaluate('document.querySelector("#form-offline").hidden') is False
+        print('PASS: all languages, portrait, logos, reduced motion, real form save, network failure preserves input, offline HTML fallback.',flush=True)
         await call('Browser.close')
 
 try:
@@ -79,3 +116,5 @@ try:
 finally:
     try: proc.wait(timeout=5)
     except subprocess.TimeoutExpired: proc.terminate()
+    form_server.terminate();form_server.wait(timeout=5)
+    temporary_data.cleanup()
