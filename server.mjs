@@ -58,6 +58,12 @@ const server = http.createServer(async (req, res) => {
       res.end(req.method === 'HEAD' ? undefined : page);
       return;
     }
+    if ((req.method === 'GET' || req.method === 'HEAD') && path === '/photos/portfolioFacePhoto.png') {
+      const photo = await readFile(join(root, 'photos', 'portfolioFacePhoto.png'));
+      res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': 'no-cache' });
+      res.end(req.method === 'HEAD' ? undefined : photo);
+      return;
+    }
     if (req.method === 'GET' && path === '/api/contact-status') return send(res, 200, { enabled: true });
     // Never serve arbitrary files: enquiries and server code stay private.
     if (path !== '/api/inquiries') return send(res, 404, { error: 'Not found' });
