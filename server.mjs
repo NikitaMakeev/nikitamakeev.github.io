@@ -58,8 +58,8 @@ const server = http.createServer(async (req, res) => {
       res.end(req.method === 'HEAD' ? undefined : page);
       return;
     }
-    if ((req.method === 'GET' || req.method === 'HEAD') && path === '/photos/portfolioFacePhoto.png') {
-      const photo = await readFile(join(root, 'photos', 'portfolioFacePhoto.png'));
+    if ((req.method === 'GET' || req.method === 'HEAD') && ['/photos/portfolioFacePhoto.png', '/photos/orchestrating-ai-nexus.png'].includes(path)) {
+      const photo = await readFile(join(root, 'photos', path.split('/').pop()));
       res.writeHead(200, { 'Content-Type': 'image/png', 'Cache-Control': 'no-cache' });
       res.end(req.method === 'HEAD' ? undefined : photo);
       return;

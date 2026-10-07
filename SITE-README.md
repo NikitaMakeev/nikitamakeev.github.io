@@ -1,6 +1,6 @@
 # PortfolioSite
 
-Основной файл — `index.html`. Актуальная фотография подключается из `photos/portfolioFacePhoto.png`. HTML содержит демонстрационные экраны,
+Основной файл — `index.html`. Актуальная фотография подключается из `photos/orchestrating-ai-nexus.png`. HTML содержит демонстрационные экраны,
 SVG-логотипы и тексты EN / ET / RU. Tailwind загружается из CDN, нужен интернет.
 
 ## Контакты на GitHub Pages
